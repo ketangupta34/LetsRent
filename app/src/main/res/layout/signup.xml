@@ -10,21 +10,27 @@
         android:id="@+id/logoImage"
         android:layout_width="150dp"
         android:layout_height="120dp"
-        android:src="@drawable/intro_car" />
+        android:src="@drawable/intro_car"
+
+        android:transitionName="logo_transition"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/akronim"
         android:text="Welcome"
-        android:textSize="55dp" />
+        android:textSize="55dp"
+
+        android:transitionName="logo_text_transition"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/aldrich"
         android:text="sign up to start"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+
+        android:transitionName="desc_text_transition"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,13 +39,15 @@
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/Full_name"
+            android:id="@+id/fullname"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="full name"
             app:boxStrokeColor="@color/theme"
-            app:hintTextColor="@color/theme">
+            app:hintTextColor="@color/theme"
+
+            android:transitionName="username_transition">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -47,7 +55,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/user_name"
+            android:id="@+id/username"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,6 +76,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
+
+            android:transitionName="password_transition"
             app:boxStrokeColor="@color/theme"
             app:hintTextColor="@color/theme">
 
@@ -101,6 +111,8 @@
             android:hint="Password"
             app:boxStrokeColor="@color/theme"
             app:hintTextColor="@color/theme"
+
+            android:transitionName="fpassword_transition"
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -118,7 +130,9 @@
         android:backgroundTint="@color/theme"
         android:layout_marginTop="10dp"
         android:text="Sign Up"
-        android:id="@+id/signUp"
+
+        android:transitionName="sign_in_transition"
+        android:id="@+id/signUpButton"
         android:textSize="22sp"/>
 
     <Button
@@ -127,7 +141,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:backgroundTint="#00000000"
-        android:id="@+id/goBackToLogin"
+        android:id="@+id/loginButton"
+
+        android:transitionName="sign_up_transition"
         android:fontFamily="@font/aldrich"
         android:text="already have an account? login"
         android:textAlignment="center"

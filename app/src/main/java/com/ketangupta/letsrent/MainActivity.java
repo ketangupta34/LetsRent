@@ -45,14 +45,14 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(MainActivity.this, Dashboard.class);
 
-//                Pair[] pairs = new Pair[2];
-//                pairs[0] = new Pair<View,String>(carImg,"logo_image");
-//                pairs[1] = new Pair<View,String>(logo,"logo_text");
-//
-//                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);
-//                startActivity(intent,options.toBundle());
+                Pair[] pairs = new Pair[2];
+                pairs[0] = new Pair<View,String>(carImg,"logo_transition");
+                pairs[1] = new Pair<View,String>(logo,"logo_text_transition");
 
-                startActivity(intent);
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);
+                startActivity(intent,options.toBundle());
+
+//                startActivity(intent);
                 finish();
             }
         },SPLASH_TIME);
