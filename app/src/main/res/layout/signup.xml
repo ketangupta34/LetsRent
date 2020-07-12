@@ -124,16 +124,17 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/signUpButton"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/theme"
         android:layout_marginTop="10dp"
-        android:text="Sign Up"
+        android:backgroundTint="@color/theme"
 
-        android:transitionName="sign_in_transition"
-        android:id="@+id/signUpButton"
-        android:textSize="22sp"/>
+        android:onClick="registerUser"
+        android:text="Sign Up"
+        android:textSize="22sp"
+        android:transitionName="sign_in_transition" />
 
     <Button
         style="@style/Widget.AppCompat.Button.Borderless"
