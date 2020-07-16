@@ -1,16 +1,29 @@
 package com.ketangupta.letsrent;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
+import java.util.Queue;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -19,6 +32,8 @@ public class Dashboard extends AppCompatActivity {
     Button signUpButton,forgotPassword,signInButton;
 
     com.google.android.material.textfield.TextInputLayout username,password;
+    ProgressBar progressBar;
+    private String user_name,pass_word;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +48,7 @@ public class Dashboard extends AppCompatActivity {
         forgotPassword = findViewById(R.id.forgotPassword);
         signUpButton = findViewById(R.id.signUpButton);
         signInButton = findViewById(R.id.signInButton);
+        progressBar = findViewById(R.id.progressBar);
 
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,4 +71,83 @@ public class Dashboard extends AppCompatActivity {
             }
         });
     }
+
+    public void loginUser(View view){
+        Log.d("loginUser", "function called");
+
+        user_name = Objects.requireNonNull(username.getEditText()).getText().toString();
+        pass_word = Objects.requireNonNull(password.getEditText()).getText().toString();
+
+        if(!validatePassword() | !validateUserName()){
+            return;
+        }
+        else{
+            progressBar.setVisibility(View.VISIBLE);
+            checkIfUser();
+        }
+
+    }
+
+    private void checkIfUser() {
+        Log.d("checkUser", "check user called");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+
+        Query checkUser = reference.orderByChild("phone").equalTo(user_name);
+
+        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    String passwordinDatabase = dataSnapshot.child(user_name).child("password").getValue(String.class);
+
+                    if(passwordinDatabase.equals(pass_word)){
+                        Intent intent = new Intent(getApplicationContext(),profilePage.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    }else{
+                        password.setError("password wrong");
+                        progressBar.setVisibility(View.GONE);
+                    }
+                }
+                else{
+                    username.setError("No such User");
+                    progressBar.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("Error", "Error ");
+            }
+        });
+    }
+
+    private boolean validateUserName() {
+        if (user_name.isEmpty()) {
+            username.setError("field cannot be empty");
+            return false;
+        }
+        else if (!user_name.matches("\\S+")) {
+            username.setError("white spaces not allowed");
+            return false;
+        }
+        else if (user_name.length() > 15) {
+            username.setError("username too long");
+            return false;
+        } else {
+            username.setError(null);
+            username.setErrorEnabled(false);
+            return true;
+        }
+    };
+    private boolean validatePassword() {
+        if (pass_word.isEmpty()) {
+            password.setError("field cannot be empty");
+            return false;
+        } else {
+            password.setError(null);
+            password.setErrorEnabled(false);
+            return true;
+        }
+    };
 }
