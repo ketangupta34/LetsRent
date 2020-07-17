@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "476945667107",
+    "firebase_url": "https://lets-rent-cede5.firebaseio.com",
+    "project_id": "lets-rent-cede5",
+    "storage_bucket": "lets-rent-cede5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476945667107:android:fb43e5ad5519186ae20d96",
+        "android_client_info": {
+          "package_name": "com.ketangupta.letsrent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476945667107-f7mg94peamq8ofsfeov5jk1d962r94ei.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ketangupta.letsrent",
+            "certificate_hash": "e54c0662eee380497d21b658f08e905bdf4be7ca"
+          }
+        },
+        {
+          "client_id": "476945667107-q1e91h6degijn4hsau6a7b7qc1518k45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn8HrkkUQdAy9Lp4klvTVfCLXkkjEDidQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "476945667107-q1e91h6degijn4hsau6a7b7qc1518k45.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
