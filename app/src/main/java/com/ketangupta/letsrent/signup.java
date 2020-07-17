@@ -22,6 +22,8 @@ public class signup extends AppCompatActivity {
     com.google.android.material.textfield.TextInputLayout username, password, fullname, email, phone;
     Button signUpButton, loginButton;
 
+    FirebaseDatabase rootnode;
+    DatabaseReference reference;
     private String full_name, user_name, e_mail, phone_number, pass_word;
 
 
@@ -38,7 +40,7 @@ public class signup extends AppCompatActivity {
         email = findViewById(R.id.email);
         phone = findViewById(R.id.phone_number);
         password = findViewById(R.id.password);
-        signUpButton = findViewById(R.id.letsGo);
+        signUpButton = findViewById(R.id.signUpButton);
         loginButton = findViewById(R.id.loginButton);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -60,14 +62,12 @@ public class signup extends AppCompatActivity {
         if (!validateName() | !validateUserName() | !validateEmail() | !validatePassword() | !validatePhoneNumber()) {
             return;
         }
-
         Intent intent = new Intent(getApplicationContext(),phoneAuthentication.class);
         intent.putExtra("phoneNo",phone_number);
         intent.putExtra("fullName",full_name);
         intent.putExtra("userName",user_name);
-        intent.putExtra("eMail",e_mail);
         intent.putExtra("password",pass_word);
-
+        intent.putExtra("eMail",e_mail);
         startActivity(intent);
     };
 

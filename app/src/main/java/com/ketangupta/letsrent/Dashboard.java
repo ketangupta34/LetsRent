@@ -78,10 +78,15 @@ public class Dashboard extends AppCompatActivity {
         user_name = Objects.requireNonNull(username.getEditText()).getText().toString();
         pass_word = Objects.requireNonNull(password.getEditText()).getText().toString();
 
+        Log.d("loginUser", "function called 2");
         if(!validatePassword() | !validateUserName()){
+
+            Log.d("loginUser", "function called if");
             return;
         }
         else{
+
+            Log.d("loginUser", "function called else");
             progressBar.setVisibility(View.VISIBLE);
             checkIfUser();
         }
