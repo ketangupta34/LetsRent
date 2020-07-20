@@ -22,10 +22,7 @@ public class signup extends AppCompatActivity {
     com.google.android.material.textfield.TextInputLayout username, password, fullname, email, phone;
     Button signUpButton, loginButton;
 
-    FirebaseDatabase rootnode;
-    DatabaseReference reference;
     private String full_name, user_name, e_mail, phone_number, pass_word;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +49,6 @@ public class signup extends AppCompatActivity {
     };
 
     public void registerUser(View view){    //signUpButton on click calls this function
-
         full_name = Objects.requireNonNull(fullname.getEditText()).getText().toString();
         user_name = Objects.requireNonNull(username.getEditText()).getText().toString();
         e_mail = Objects.requireNonNull(email.getEditText()).getText().toString();
