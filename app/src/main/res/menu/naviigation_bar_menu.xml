@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navOne"
+            android:title="One" />
+        <item
+            android:id="@+id/navTwo"
+            android:title="TWO" />
+        <item
+            android:id="@+id/navThree"
+            android:title="Three" />
+        <item
+            android:id="@+id/navFour"
+            android:title="Four" />
+    </group>
+
+    <item android:title="profile">
+        <group android:checkableBehavior="single">
+            <menu>
+
+                <item
+                    android:id="@+id/navbtm"
+                    android:title="signin" />
+                <item
+                    android:id="@+id/navLogOut"
+                    android:title="log out" />
+            </menu>
+        </group>
+    </item>
+
+
+</menu>
